@@ -1,29 +1,46 @@
-import numpy as np
 from math import e
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-formulaInput = input('Entre com a funcao f: ')
-a = int(input('Digite um valor inicial para o intervalo: '))
-b = int(input('Digite um valor final para o intervalo: '))
-ATOL = float(input('Entre com a precisao desejada: '))
+#f = input('Entre com a funcao f: ')
+#f = e**x-2*x-1
 
-n = np.ceil(np.log2((a + b) / (2 * ATOL)))
-a_alg = a
-b_alg = b
+a = int(input('Insira o valor a do intervalo [a,b]: '))
 
-def formula(x):
-    return eval(formulaInput)
+b = int(input('Insira o valor b do intervalo [a,b]: '))
 
-for i in range(int(n)):
-    x = (a_alg + b_alg) / 2
-    f_x = formula(x)
+tol = float(input('Entre com a precisao desejada: '))
 
-    if formula(a_alg) * f_x < 0:
-        b_alg = x
+kmax = int(input('Entre com o numero maximo de iteracoes: '))
+
+k = 0
+
+def f(x):
+    return e**x-2*x-1
+
+while (k < kmax):
+
+    k = k + 1
+    a
+    b
+    x = (a + b) / 2
+    f(x)
+
+    if ((b - a) < tol):
+        print('A raiz eh: ', x)
+        break
+
+    if (f(a) * f(x) < 0):
+        b = x;
     else:
-        a_alg = x
+        a = x;
 
-print("Número de iterações:", int(n))
-print("Erro absoluto da resposta:", np.abs(np.pi - x))
-print("x encontrado:", x)
-print("x esperado:", np.pi)
-print("Erro de f(x)", np.abs(np.sin(x)))
+    if (f(a) * f(x) == 0):
+        print('A raiz eh: ', x)
+        break
+
+print('O numero de iteracoes para atingir a precisao desejada foi k= ', k);
+
+x = np.linspace(a, b)
+y = f(x)
